@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 25% 10%;
+
+    --card: 220 20% 100%;
+    --card-foreground: 220 25% 10%;
+
+    --popover: 220 20% 100%;
+    --popover-foreground: 220 25% 10%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 220 25% 5%;
+
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 25% 15%;
+
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 199 89% 48%;
+    --accent-foreground: 220 25% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --glow: 199 89% 48%;
+    --grid-color: 220 15% 85%;
+    --hero-gradient: linear-gradient(135deg, hsl(199 89% 48% / 0.1) 0%, hsl(220 20% 97%) 50%, hsl(45 93% 58% / 0.05) 100%);
+    --card-hover-shadow: 0 20px 40px -15px hsl(199 89% 48% / 0.15);
+    --text-gradient: linear-gradient(135deg, hsl(199 89% 48%) 0%, hsl(180 70% 45%) 100%);
+  }
+
+  .dark {
+    --background: 222 25% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 222 25% 11%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 222 25% 11%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 199 89% 55%;
+    --primary-foreground: 222 25% 5%;
+
+    --secondary: 222 20% 15%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 222 20% 18%;
+    --muted-foreground: 215 15% 55%;
+
+    --accent: 199 89% 55%;
+    --accent-foreground: 222 25% 5%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 20% 18%;
+    --input: 222 20% 18%;
+    --ring: 199 89% 55%;
+
+    --glow: 199 89% 55%;
+    --grid-color: 222 20% 15%;
+    --hero-gradient: linear-gradient(135deg, hsl(199 89% 55% / 0.08) 0%, hsl(222 25% 8%) 50%, hsl(45 93% 58% / 0.03) 100%);
+    --card-hover-shadow: 0 20px 40px -15px hsl(199 89% 55% / 0.25);
+    --text-gradient: linear-gradient(135deg, hsl(199 89% 55%) 0%, hsl(180 70% 50%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow {
+    box-shadow: 0 0 20px hsl(var(--glow) / 0.3), 0 0 40px hsl(var(--glow) / 0.1);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--glow) / 0.5);
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--grid-color)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color)) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .hero-bg {
+    background: var(--hero-gradient);
+  }
+}
