@@ -17,7 +17,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <HashRouter basename="/Portfolio">
+      <HashRouter>
         <Layout>
           <Routes>
             <Route path="/" element={<Index />} />
