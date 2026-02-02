@@ -63,33 +63,6 @@ const About = () => {
             </div>
           </div>
 
-          {/* Fun facts */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-10 p-6 bg-card border border-border rounded-xl"
-          >
-            <h3 className="font-mono text-lg font-semibold mb-4">Quick Facts</h3>
-            <ul className="space-y-2 text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-mono">→</span>
-                Graduating May 2027 with dual Honors degrees
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-mono">→</span>
-                Fluent in English, Mandarin, Spanish, and Kannada
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-mono">→</span>
-                Published research on FinFET semiconductor devices
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-primary font-mono">→</span>
-                Passionate about audio engineering and RF/microwave design
-              </li>
-            </ul>
-          </motion.div>
         </motion.div>
 
         {/* Contact form */}
