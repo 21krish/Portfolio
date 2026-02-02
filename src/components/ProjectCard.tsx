@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+import { assetUrl } from "@/lib/utils";
 
 interface ProjectCardProps {
   title: string;
@@ -26,7 +27,7 @@ const ProjectCard = ({ title, description, tags, image, video, github, demo, ind
       {image && (
         <div className="aspect-video overflow-hidden border-b border-border">
           <img 
-            src={image} 
+            src={assetUrl(image)} 
             alt={title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
@@ -35,7 +36,7 @@ const ProjectCard = ({ title, description, tags, image, video, github, demo, ind
       {video && !image && (
         <div className="aspect-video overflow-hidden border-b border-border relative">
           <video 
-            src={video}
+            src={assetUrl(video)}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             muted
             playsInline

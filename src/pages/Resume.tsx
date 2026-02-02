@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, FileText, Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { assetUrl } from "@/lib/utils";
 
 const skills = {
   "Technical": ["PCB Design (Altium)", "Verilog (Vivado)", "SPICE/LTSpice", "Python (NumPy, Matplotlib)", "C", "MATLAB", "HFSS", "ADS"],
@@ -88,7 +89,7 @@ const Resume = () => {
         
         {/* Quick links */}
         <div className="flex flex-wrap gap-4">
-          <a href="/Resume.pdf" download>
+          <a href={assetUrl("Resume.pdf")} download>
             <Button variant="default" className="gap-2 glow">
               <Download size={18} />
               Download CV

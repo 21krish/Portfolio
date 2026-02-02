@@ -6,6 +6,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { ExternalLink, Github, FileText, Play } from "lucide-react";
+import { assetUrl } from "@/lib/utils";
 
 interface ProjectModalProps {
   open: boolean;
@@ -36,7 +37,7 @@ const ProjectModal = ({ open, onOpenChange, project }: ProjectModalProps) => {
             {project.image && (
               <div className="w-full aspect-video overflow-hidden rounded-lg border border-border">
                 <img
-                  src={project.image}
+                  src={assetUrl(project.image)}
                   alt={project.title}
                   className="w-full h-full object-cover"
                 />
@@ -45,7 +46,7 @@ const ProjectModal = ({ open, onOpenChange, project }: ProjectModalProps) => {
             {project.video && (
               <div className="w-full aspect-video rounded-lg border border-border overflow-hidden">
                 <video
-                  src={project.video}
+                  src={assetUrl(project.video)}
                   controls
                   className="w-full h-full object-cover"
                 >
@@ -60,7 +61,7 @@ const ProjectModal = ({ open, onOpenChange, project }: ProjectModalProps) => {
                 {project.images.map((img, idx) => (
                   <div key={idx} className="aspect-video overflow-hidden rounded-lg border border-border">
                     <img
-                      src={img}
+                      src={assetUrl(img)}
                       alt={`${project.title} - Image ${idx + 1}`}
                       className="w-full h-full object-cover"
                     />
@@ -75,7 +76,7 @@ const ProjectModal = ({ open, onOpenChange, project }: ProjectModalProps) => {
                 {project.videos.map((vid, idx) => (
                   <div key={idx} className="w-full aspect-video rounded-lg border border-border overflow-hidden">
                     <video
-                      src={vid}
+                      src={assetUrl(vid)}
                       controls
                       className="w-full h-full object-cover"
                     >
@@ -145,7 +146,7 @@ const ProjectModal = ({ open, onOpenChange, project }: ProjectModalProps) => {
                 )}
                 {project.document && (
                   <a
-                    href={project.document}
+                    href={assetUrl(project.document)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-mono"
