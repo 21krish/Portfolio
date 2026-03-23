@@ -6,21 +6,21 @@ import ProjectCard from "@/components/ProjectCard";
 
 const featuredProjects = [
   {
-    title: "Modular Analog Synthesizer",
-    description: "Leading design and prototyping of analog synth modules including VCO, VCA, diode ladder filter, and kick drum circuit. PCB layout in Altium with high signal fidelity.",
-    tags: ["Altium", "Analog Design", "PCB"],
+    title: "Chess CNN Engine",
+    description: "Built a supervised CNN/residual chess engine pipeline with PGN preprocessing, training, and gameplay inference for human-like move prediction.",
+    tags: ["Python", "PyTorch", "CNN", "Chess AI"],
     github: "#",
   },
   {
-    title: "Micropatch Antenna (3GHz)",
-    description: "Designed and optimized inset feed microstrip patch antenna achieving 4.26 dB gain. Fabricated, tested with VNA, and measured in anechoic chamber.",
-    tags: ["HFSS", "ADS", "RF/Microwave", "VNA"],
+    title: "Series RLC Circuit Simulation",
+    description: "Modeled steady and transient behavior of series RLC circuits with SciPy and Matplotlib under varying AC conditions.",
+    tags: ["Python", "SciPy", "Circuit Analysis"],
     github: "#",
   },
   {
-    title: "Voice Scrambler with Digital Filtering",
-    description: "Engineered voice scrambler/descrambler with modulator-demodulator system and digital low-pass filtering. Achieved 12.83 dB SNR using MATLAB frequency domain analysis.",
-    tags: ["MATLAB", "Signal Processing", "DSP"],
+    title: "CO2 Emissions Prediction Model",
+    description: "Analyzed US GDP and urban population relationships with CO2 emissions and built prediction models for future trend estimates.",
+    tags: ["Python", "Pandas", "Prediction", "Data Analysis"],
     github: "#",
   },
 ];
@@ -45,7 +45,7 @@ const Index = () => {
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
                 Honors student at Michigan State University studying Electrical Engineering and Physics. 
-                Interested in RF/microwave engineering and quantum computing.
+                Interested in AI and RF systems.
               </p>
               
               <div className="flex flex-wrap gap-4">
@@ -153,8 +153,8 @@ const Index = () => {
             {[
               {
                 icon: <Atom size={40} />,
-                title: "RF/Microwave Engineering",
-                description: "Antenna design, VNA testing, and electromagnetic simulations.",
+                title: "RF Systems",
+                description: "Antenna design, high-frequency circuit work, and RF measurement/simulation.",
               },
               {
                 icon: <Cpu size={40} />,
@@ -163,8 +163,8 @@ const Index = () => {
               },
               {
                 icon: <Zap size={40} />,
-                title: "Quantum Computing",
-                description: "Exploring quantum computing principles and applications.",
+                title: "Artificial Intelligence",
+                description: "Building ML models for prediction, signal understanding, and intelligent systems.",
               },
             ].map((item, index) => (
               <motion.div

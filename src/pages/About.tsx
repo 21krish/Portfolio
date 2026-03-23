@@ -38,7 +38,7 @@ const About = () => {
             </p>
             
             <p>
-              I'm interested in RF/microwave engineering and quantum computing. My current 
+              I'm interested in AI and RF systems. My current 
               work includes PCB design, FPGA development, signal processing, and hardware testing. 
               I'm also exploring antenna design and electromagnetic simulations.
             </p>

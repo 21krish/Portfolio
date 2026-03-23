@@ -153,6 +153,19 @@ The project demonstrates proficiency in circuit theory, numerical methods, softw
     github: "#",
   },
   {
+    title: "Chess CNN Engine",
+    description: "Built a supervised deep-learning chess engine trained on high-ELO game data with a convolutional/residual architecture for human-like move prediction.",
+    briefOutline: "CNN-based chess move prediction engine with dataset preprocessing, training, and gameplay inference.",
+    detailedDescription: `I developed a chess engine pipeline using a convolutional neural network trained on strong player game records. The project includes PGN-to-JSONL dataset preprocessing, board encoding, model training, and inference for move selection.
+
+The training workflow supports augmentation and configurable model outputs, including policy/value style training configurations for stronger move quality. I used PyTorch-based scripts to run smoke tests and full training checkpoints.
+
+The final project includes command-line tooling for dataset generation, training, and interactive play, making it practical to iterate on architecture and training strategy.`,
+    tags: ["Python", "PyTorch", "CNN", "Deep Learning", "Chess AI"],
+    document: "/projects/chess-cnn-engine/README.md",
+    github: "#",
+  },
+  {
     title: "Series RLC Circuit Simulation",
     description: "Modeled steady and transient states of series RLC circuit using SciPy and Pyplot, achieving highly accurate results for circuit analysis and validation.",
     briefOutline: "Python-based simulation of RLC circuit behavior in steady and transient states.",
@@ -162,6 +175,20 @@ The tool solves the differential equations governing RLC circuit behavior, accou
 
 The simulation results achieved high accuracy when compared to theoretical calculations, making it a useful tool for circuit analysis and validation. This project demonstrated understanding of circuit theory, numerical methods, and scientific computing.`,
     tags: ["Python", "SciPy", "Circuit Analysis"],
+    document: "/projects/cmse-project-2/CMSE201 Project 2-Krishanga.pdf",
+    github: "#",
+  },
+  {
+    title: "CO2 Emissions Prediction Model",
+    description: "Analyzed US GDP and urban population trends against CO2 emissions and built predictive models to forecast near-term emissions behavior.",
+    briefOutline: "Data-driven CO2 trend analysis and prediction using economic and population indicators.",
+    detailedDescription: `This project investigates how GDP growth and urban population correlate with annual CO2 emissions in the United States using historical time-series data.
+
+I cleaned and structured multi-indicator datasets, performed exploratory analysis, and compared emission components across sectors to understand long-term drivers of total emissions.
+
+Using predictive modeling techniques, I estimated CO2 trends for the following years and evaluated how macroeconomic and demographic variables can inform future emissions planning.`,
+    tags: ["Python", "Pandas", "NumPy", "Data Analysis", "Prediction"],
+    document: "/projects/cmse-project-1/CMSE201 Project 1-Krishanga.pdf",
     github: "#",
   },
   {
