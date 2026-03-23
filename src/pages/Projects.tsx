@@ -6,7 +6,13 @@ import { motion } from "framer-motion";
 interface Project {
   title: string;
   description: string;
+  subtitle?: string;
   briefOutline?: string;
+  overview?: string;
+  keyTopics?: string[];
+  technicalHighlights?: string[];
+  toolsMethods?: string[];
+  whyItMatters?: string;
   detailedDescription: string;
   tags: string[];
   image?: string;
@@ -14,11 +20,27 @@ interface Project {
   video?: string;
   videos?: string[];
   document?: string;
+  documents?: Array<{
+    label: string;
+    path: string;
+  }>;
   github?: string;
   demo?: string;
 }
 
 const projects: Project[] = [
+  {
+    title: "Chess CNN Engine",
+    description: "Built a supervised chess engine pipeline that converts GM PGNs into training data, trains a residual CNN in PyTorch, and supports playable CLI and GUI inference.",
+    briefOutline: "PyTorch residual CNN chess engine trained on grandmaster PGNs with interactive play support.",
+    detailedDescription: `This project packages a full supervised learning pipeline for chess move prediction using grandmaster PGN data. I built dataset conversion scripts that transform raw PGNs into JSONL training examples, filter for stronger games, and support mirrored augmentation to improve training diversity.
+
+The model is a residual convolutional neural network implemented in PyTorch. It uses an 8x8 board tensor representation, predicts legal moves through a masked policy head, and optionally adds a value head for simple lookahead-based move selection. Training includes checkpointing, validation tracking, and configurable hyperparameters such as channel count, residual blocks, batch size, and mixed precision support.
+
+Beyond training, I built both command-line and GUI play interfaces so the model can be used interactively. The engine supports temperature sampling, top-k move selection, and lightweight one-ply lookahead, turning the trained network into a usable chess-playing system rather than just an offline experiment.`,
+    tags: ["Python", "PyTorch", "CNN", "Chess AI", "GUI"],
+    github: "#",
+  },
   {
     title: "Modular Analog Synthesizer",
     description: "Leading student audio engineering group in designing and prototyping analog synthesizer modules. Developed VCO, VCA, diode ladder filter, and analog kick drum circuit. Directed schematic design, PCB layout using Altium, and hardware debugging for high signal fidelity.",
@@ -153,6 +175,19 @@ The project demonstrates proficiency in circuit theory, numerical methods, softw
     github: "#",
   },
   {
+    title: "Chess CNN Engine",
+    description: "Built a supervised deep-learning chess engine trained on high-ELO game data with a convolutional/residual architecture for human-like move prediction.",
+    briefOutline: "CNN-based chess move prediction engine with dataset preprocessing, training, and gameplay inference.",
+    detailedDescription: `I developed a chess engine pipeline using a convolutional neural network trained on strong player game records. The project includes PGN-to-JSONL dataset preprocessing, board encoding, model training, and inference for move selection.
+
+The training workflow supports augmentation and configurable model outputs, including policy/value style training configurations for stronger move quality. I used PyTorch-based scripts to run smoke tests and full training checkpoints.
+
+The final project includes command-line tooling for dataset generation, training, and interactive play, making it practical to iterate on architecture and training strategy.`,
+    tags: ["Python", "PyTorch", "CNN", "Deep Learning", "Chess AI"],
+    document: "/projects/chess-cnn-engine/README.md",
+    github: "#",
+  },
+  {
     title: "Series RLC Circuit Simulation",
     description: "Modeled steady and transient states of series RLC circuit using SciPy and Pyplot, achieving highly accurate results for circuit analysis and validation.",
     briefOutline: "Python-based simulation of RLC circuit behavior in steady and transient states.",
@@ -162,6 +197,20 @@ The tool solves the differential equations governing RLC circuit behavior, accou
 
 The simulation results achieved high accuracy when compared to theoretical calculations, making it a useful tool for circuit analysis and validation. This project demonstrated understanding of circuit theory, numerical methods, and scientific computing.`,
     tags: ["Python", "SciPy", "Circuit Analysis"],
+    document: "/projects/cmse-project-2/CMSE201 Project 2-Krishanga.pdf",
+    github: "#",
+  },
+  {
+    title: "CO2 Emissions Prediction Model",
+    description: "Analyzed US GDP and urban population trends against CO2 emissions and built predictive models to forecast near-term emissions behavior.",
+    briefOutline: "Data-driven CO2 trend analysis and prediction using economic and population indicators.",
+    detailedDescription: `This project investigates how GDP growth and urban population correlate with annual CO2 emissions in the United States using historical time-series data.
+
+I cleaned and structured multi-indicator datasets, performed exploratory analysis, and compared emission components across sectors to understand long-term drivers of total emissions.
+
+Using predictive modeling techniques, I estimated CO2 trends for the following years and evaluated how macroeconomic and demographic variables can inform future emissions planning.`,
+    tags: ["Python", "Pandas", "NumPy", "Data Analysis", "Prediction"],
+    document: "/projects/cmse-project-1/CMSE201 Project 1-Krishanga.pdf",
     github: "#",
   },
   {
@@ -208,18 +257,44 @@ This project demonstrated proficiency in RF/microwave design, electromagnetic si
     github: "#",
   },
   {
-    title: "Semiconductor Analysis Report",
-    description: "Comprehensive technical report analyzing FinFET semiconductor device technology, including history, operating principles, applications in digital logic and memory, market analysis, and exploration of Gate-All-Around FETs (GAAFETs) as successors for sub-5nm technologies.",
-    briefOutline: "Comprehensive analysis of FinFET semiconductor technology and future device architectures.",
-    detailedDescription: `I authored a comprehensive technical report analyzing FinFET (Fin Field-Effect Transistor) semiconductor device technology. The report provides an in-depth overview of this critical semiconductor architecture that has enabled continued scaling of integrated circuits.
+    title: "Advanced Semiconductor Devices: FinFETs and TFETs",
+    subtitle: "Class-based technical review project on transistor scaling, switching physics, and low-power device tradeoffs.",
+    description: "Advanced semiconductor devices review project focused on FinFETs and TFETs, covering scaling behavior, switching mechanisms, low-power tradeoffs, and industry relevance in modern electronics.",
+    briefOutline: "Technical review project examining FinFET and TFET architectures for next-generation electronics.",
+    overview: "This advanced class-based project explored FinFETs and TFETs as modern transistor architectures beyond planar MOSFET scaling. The work focused on device physics, switching behavior, leakage and performance tradeoffs, and the broader role of these devices in low-power and high-density semiconductor design.",
+    keyTopics: [
+      "FinFETs",
+      "TFETs",
+      "MOSFET scaling limits",
+      "GAAFET comparison",
+      "Leakage vs performance tradeoffs",
+      "Low-power electronics",
+      "Semiconductor industry applications",
+    ],
+    technicalHighlights: [
+      "Compared FinFET electrostatic control against planar MOSFET limitations at aggressive technology nodes.",
+      "Analyzed TFET tunneling-based switching as a path toward lower-power operation and steeper subthreshold behavior.",
+      "Evaluated transistor-level tradeoffs across leakage current, switching speed, scalability, and manufacturability.",
+      "Connected device-physics concepts to practical industry transitions toward advanced gate architectures such as GAAFETs.",
+    ],
+    toolsMethods: ["Literature review", "Analytical modeling", "MATLAB"],
+    whyItMatters: "This project shows the ability to study advanced device architectures at the transistor level, synthesize technical sources into clear engineering conclusions, and communicate semiconductor tradeoffs in a recruiter-friendly way. It reflects strong preparation for work involving microelectronics, device modeling, and next-generation computing hardware.",
+    detailedDescription: `I developed this project as an advanced technical review for coursework in semiconductor devices, using two structured reports to evaluate how FinFETs and TFETs address the limits of conventional MOSFET scaling.
 
-The analysis covers the historical development of FinFET technology, explaining how it addressed the limitations of planar MOSFETs as device dimensions shrank below 32nm. I detailed the operating principles of FinFETs, including how the three-dimensional fin structure provides better gate control and reduces short-channel effects.
+The work examined the physics behind short-channel effects, leakage behavior, and switching mechanisms, then compared how different device architectures improve electrostatic control and low-power operation. I also analyzed how these architectures fit into current industry roadmaps, including their relationship to GAAFET-based scaling trends.
 
-The report explores applications of FinFET technology in digital logic circuits and memory systems, demonstrating its importance in modern processors and memory devices. I also conducted market analysis to understand the adoption and impact of FinFET technology in the semiconductor industry.
-
-Additionally, the report investigates Gate-All-Around FETs (GAAFETs) as the next-generation device architecture for sub-5nm technology nodes. This forward-looking analysis examines how GAAFETs address the limitations of FinFETs and enable further device scaling. The report demonstrates proficiency in semiconductor device physics, technology analysis, and technical writing.`,
-    tags: ["Semiconductors", "FinFET", "Technical Writing", "Device Physics", "GAAFET"],
-    document: "/projects/semiconductor-analysis/semiconductor-report.pdf",
+Rather than presenting original fabrication or experimental work, the project emphasizes analytical modeling, literature-driven evaluation, and technical communication. The result is a concise but rigorous review of transistor-level design tradeoffs that are increasingly important in modern electronics and semiconductor engineering.`,
+    tags: ["Semiconductors", "FinFET", "TFET", "MATLAB", "Device Physics", "Low Power"],
+    documents: [
+      {
+        label: "View Report 1",
+        path: "/projects/advanced-semiconductor-devices/ECE377_S25_project_report_1-Krishanga.pdf",
+      },
+      {
+        label: "View Report 2",
+        path: "/projects/advanced-semiconductor-devices/ECE377_S25_project_report_2-Krishanga.pdf",
+      },
+    ],
     github: "#",
   },
 ];

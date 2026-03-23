@@ -6,21 +6,21 @@ import ProjectCard from "@/components/ProjectCard";
 
 const featuredProjects = [
   {
-    title: "Modular Analog Synthesizer",
-    description: "Leading design and prototyping of analog synth modules including VCO, VCA, diode ladder filter, and kick drum circuit. PCB layout in Altium with high signal fidelity.",
-    tags: ["Altium", "Analog Design", "PCB"],
+    title: "Chess CNN Engine",
+    description: "Built a supervised CNN/residual chess engine pipeline with PGN preprocessing, training, and gameplay inference for human-like move prediction.",
+    tags: ["Python", "PyTorch", "CNN", "Chess AI"],
     github: "#",
   },
   {
-    title: "Micropatch Antenna (3GHz)",
-    description: "Designed and optimized inset feed microstrip patch antenna achieving 4.26 dB gain. Fabricated, tested with VNA, and measured in anechoic chamber.",
-    tags: ["HFSS", "ADS", "RF/Microwave", "VNA"],
+    title: "Series RLC Circuit Simulation",
+    description: "Modeled steady and transient behavior of series RLC circuits with SciPy and Matplotlib under varying AC conditions.",
+    tags: ["Python", "SciPy", "Circuit Analysis"],
     github: "#",
   },
   {
-    title: "Voice Scrambler with Digital Filtering",
-    description: "Engineered voice scrambler/descrambler with modulator-demodulator system and digital low-pass filtering. Achieved 12.83 dB SNR using MATLAB frequency domain analysis.",
-    tags: ["MATLAB", "Signal Processing", "DSP"],
+    title: "CO2 Emissions Prediction Model",
+    description: "Analyzed US GDP and urban population relationships with CO2 emissions and built prediction models for future trend estimates.",
+    tags: ["Python", "Pandas", "Prediction", "Data Analysis"],
     github: "#",
   },
 ];

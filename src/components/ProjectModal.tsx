@@ -5,15 +5,26 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { ExternalLink, Github, FileText, Play } from "lucide-react";
+import { ExternalLink, Github, FileText } from "lucide-react";
 import { assetUrl } from "@/lib/utils";
+
+interface ProjectDocument {
+  label: string;
+  path: string;
+}
 
 interface ProjectModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   project: {
     title: string;
+    subtitle?: string;
     briefOutline?: string;
+    overview?: string;
+    keyTopics?: string[];
+    technicalHighlights?: string[];
+    toolsMethods?: string[];
+    whyItMatters?: string;
     detailedDescription: string;
     tags: string[];
     image?: string;
@@ -21,6 +32,7 @@ interface ProjectModalProps {
     video?: string;
     videos?: string[];
     document?: string;
+    documents?: ProjectDocument[];
     github?: string;
     demo?: string;
   } | null;
@@ -28,6 +40,10 @@ interface ProjectModalProps {
 
 const ProjectModal = ({ open, onOpenChange, project }: ProjectModalProps) => {
   if (!project) return null;
+
+  const documents =
+    project.documents ??
+    (project.document ? [{ label: "View Report", path: project.document }] : []);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -89,23 +105,95 @@ const ProjectModal = ({ open, onOpenChange, project }: ProjectModalProps) => {
 
             <DialogHeader>
               <DialogTitle className="text-2xl font-mono">{project.title}</DialogTitle>
-              {project.briefOutline && (
+              {(project.subtitle || project.briefOutline) && (
                 <DialogDescription className="text-base pt-2">
-                  {project.briefOutline}
+                  {project.subtitle ?? project.briefOutline}
                 </DialogDescription>
               )}
             </DialogHeader>
 
-            {/* Detailed Description */}
-            <div className="space-y-4">
-              <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed">
-                {project.detailedDescription.split('\n').map((paragraph, idx) => (
-                  <p key={idx} className="mb-4">
-                    {paragraph}
-                  </p>
-                ))}
+            {project.overview && (
+              <section className="space-y-3">
+                <h3 className="font-mono text-sm uppercase tracking-wide text-foreground">
+                  Overview
+                </h3>
+                <div className="rounded-xl border border-border bg-card/60 p-4 text-muted-foreground leading-relaxed">
+                  {project.overview}
+                </div>
+              </section>
+            )}
+
+            {(project.keyTopics?.length || project.toolsMethods?.length) && (
+              <div className="grid gap-4 md:grid-cols-2">
+                {project.keyTopics && project.keyTopics.length > 0 && (
+                  <section className="space-y-3 rounded-xl border border-border bg-card/60 p-4">
+                    <h3 className="font-mono text-sm uppercase tracking-wide text-foreground">
+                      Key Topics
+                    </h3>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {project.keyTopics.map((topic) => (
+                        <li key={topic}>{topic}</li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+
+                {project.toolsMethods && project.toolsMethods.length > 0 && (
+                  <section className="space-y-3 rounded-xl border border-border bg-card/60 p-4">
+                    <h3 className="font-mono text-sm uppercase tracking-wide text-foreground">
+                      Tools / Methods
+                    </h3>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      {project.toolsMethods.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
               </div>
-            </div>
+            )}
+
+            {/* Detailed Description */}
+            {project.detailedDescription && (
+              <div className="space-y-4">
+                <h3 className="font-mono text-sm uppercase tracking-wide text-foreground">
+                  Detailed Description
+                </h3>
+                <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed">
+                  {project.detailedDescription.split('\n').map((paragraph, idx) => (
+                    <p key={idx} className="mb-4">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {project.technicalHighlights && project.technicalHighlights.length > 0 && (
+              <section className="space-y-3">
+                <h3 className="font-mono text-sm uppercase tracking-wide text-foreground">
+                  Technical Highlights
+                </h3>
+                <div className="rounded-xl border border-border bg-card/60 p-4">
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    {project.technicalHighlights.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            )}
+
+            {project.whyItMatters && (
+              <section className="space-y-3">
+                <h3 className="font-mono text-sm uppercase tracking-wide text-foreground">
+                  Why It Matters
+                </h3>
+                <div className="rounded-xl border border-border bg-card/60 p-4 text-muted-foreground leading-relaxed">
+                  {project.whyItMatters}
+                </div>
+              </section>
+            )}
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2 pt-2">
@@ -120,7 +208,7 @@ const ProjectModal = ({ open, onOpenChange, project }: ProjectModalProps) => {
             </div>
 
             {/* Links */}
-            {(project.github || project.demo || project.document) && (
+            {(project.github || project.demo || documents.length > 0) && (
               <div className="flex flex-wrap gap-4 pt-4 border-t border-border">
                 {project.github && project.github !== "#" && (
                   <a
@@ -144,17 +232,18 @@ const ProjectModal = ({ open, onOpenChange, project }: ProjectModalProps) => {
                     <span>View Demo</span>
                   </a>
                 )}
-                {project.document && (
+                {documents.map((document) => (
                   <a
-                    href={assetUrl(project.document)}
+                    key={document.path}
+                    href={assetUrl(document.path)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-mono"
+                    className="inline-flex items-center gap-2 rounded-lg border border-border bg-secondary px-4 py-2 text-sm text-secondary-foreground hover:border-primary/40 hover:text-primary transition-colors font-mono"
                   >
                     <FileText size={18} />
-                    <span>View Report</span>
+                    <span>{document.label}</span>
                   </a>
-                )}
+                ))}
               </div>
             )}
         </div>
