@@ -45,7 +45,7 @@ const Index = () => {
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-xl">
                 Honors student at Michigan State University studying Electrical Engineering and Physics. 
-                Interested in RF/microwave engineering and quantum computing.
+                Interested in RF engineering, audio engineering, and AI.
               </p>
               
               <div className="flex flex-wrap gap-4">
@@ -153,18 +153,18 @@ const Index = () => {
             {[
               {
                 icon: <Atom size={40} />,
-                title: "RF/Microwave Engineering",
-                description: "Antenna design, VNA testing, and electromagnetic simulations.",
+                title: "RF Engineering",
+                description: "Antenna design, high-frequency circuit work, and RF measurement and simulation.",
               },
               {
                 icon: <Cpu size={40} />,
-                title: "Hardware Design",
-                description: "PCB design, FPGA development, and analog circuit design.",
+                title: "Audio Engineering",
+                description: "Analog audio circuits, synth design, signal flow, and hands-on prototyping.",
               },
               {
                 icon: <Zap size={40} />,
-                title: "Quantum Computing",
-                description: "Exploring quantum computing principles and applications.",
+                title: "Artificial Intelligence",
+                description: "Building ML models for prediction, signal understanding, and intelligent systems.",
               },
             ].map((item, index) => (
               <motion.div
